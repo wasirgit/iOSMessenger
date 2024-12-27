@@ -32,8 +32,8 @@
 		4B2D09F12D1ECCDB007A2A69 = {
 			isa = PBXGroup;
 			children = (
-				4B2D09FC2D1ECCDB007A2A69 /* iOSMessanger */,
 				4B2D09FB2D1ECCDB007A2A69 /* Products */,
+				4B2D09FC2D1ECCDB007A2A69 /* iOSMessanger */,
 			);
 			sourceTree = "<group>";
 		};
