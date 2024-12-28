@@ -1,19 +1,20 @@
 //
-//  LoginView.swift
+//  RegistrationView.swift
 //  iOSMessanger
 //
-//  Created by Wasir on 27/12/24.
+//  Created by Wasir on 28/12/24.
 //
 
 import SwiftUI
 
-struct LoginView: View {
+struct RegistrationView: View {
     @State private var email = ""
+    @State private var fullname = ""
     @State private var password = ""
     
-
+    @Environment(\.dismiss) var dismiss
     var body: some View {
-        NavigationStack{
+        VStack{
             Spacer()
             VStack {
                 Image("messenger-icon")
@@ -29,6 +30,12 @@ struct LoginView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
                     .padding(.horizontal,24)
+                TextField("Enter your fullname",text: $fullname)
+                    .font(.subheadline)
+                    .padding(12)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                    .padding(.horizontal,24)
                 SecureField("Enter your password",text: $password)
                     .font(.subheadline)
                     .padding(12)
@@ -37,22 +44,10 @@ struct LoginView: View {
                     .padding(.horizontal,24)
             }
             
-            Button{
-                print("Forgot button tapped")
-            } label: {
-                Text("Forgot password?")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .padding(.top)
-                    .padding(.trailing,24)
-            }
-            .frame(maxWidth: .infinity,alignment: .trailing)
-            
-            
             Button {
                 print("tap on login")
             } label: {
-                Text("login")
+                Text("Sign up")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
@@ -61,53 +56,25 @@ struct LoginView: View {
                     .cornerRadius(10)
             }
             .padding(.vertical)
-
-            
-            HStack{
-            
-                Rectangle()
-                    .frame(width: (UIScreen.main.bounds.width - 100) / 2, height: 0.5)
-                Text("OR")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                Rectangle()
-                    .frame(width: (UIScreen.main.bounds.width - 100) / 2, height: 0.5)
-            }
-            .foregroundColor(.gray)
-            
-            HStack{
-                Image("facebook-icon")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    
-                    
-                Text("Login with Facebook")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color(.systemBlue))
-            }
-            .padding(.top,8)
-            
             Spacer()
-            
             Divider()
-            NavigationLink{
-                RegistrationView()
-                    .navigationBarBackButtonHidden()
             
+            Button{
+                dismiss()
             }label: {
                 HStack(spacing: 3){
-                    Text("Don't have an account? ")
-                    Text("Sign Up")
-
+                    Text("Already have an account? ")
+                    
+                    Text("Sign In")
                         .fontWeight(.semibold)
                 }.font(.footnote)
             }.padding(.vertical)
-            
+
+           
         }
     }
 }
 
 #Preview {
-    LoginView()
+    RegistrationView()
 }
