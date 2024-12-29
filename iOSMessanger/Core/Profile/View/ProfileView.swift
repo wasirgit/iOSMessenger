@@ -7,14 +7,27 @@
 
 import SwiftUI
 
+import PhotosUI
 struct ProfileView: View {
+    @StateObject var viewModel = ProfileViewModel()
     var body: some View {
         VStack{
             VStack{
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(Color(.systemGray4))
+                
+                PhotosPicker( selection: $viewModel.selectedItem) {
+                    if let profileImage = viewModel.profileImage {
+                        Image(uiImage: profileImage)
+                                              .resizable()
+                                              .scaledToFill()
+                                              .frame(width: 100, height: 100)
+                                              .clipShape(Circle())
+                    } else{
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .foregroundColor(Color(.systemGray4))
+                    }
+                }
                 
                 Text("John Wick")
                     .font(.title2)
