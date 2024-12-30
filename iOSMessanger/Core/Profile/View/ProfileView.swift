@@ -10,6 +10,7 @@ import SwiftUI
 import PhotosUI
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
+    let user: User
     var body: some View {
         VStack{
             VStack{
@@ -22,14 +23,16 @@ struct ProfileView: View {
                                               .frame(width: 100, height: 100)
                                               .clipShape(Circle())
                     } else{
-                        Image(systemName: "person.circle.fill")
+                        Image(user.profileImageUrl ?? "")
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 100, height: 100)
                             .foregroundColor(Color(.systemGray4))
+                            .clipShape(Circle())
                     }
                 }
                 
-                Text("John Wick")
+                Text(user.fullname)
                     .font(.title2)
                     .fontWeight(.semibold)
             }
@@ -68,5 +71,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(user: User.MOCK_USER)
 }
