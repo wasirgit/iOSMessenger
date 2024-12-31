@@ -20,15 +20,10 @@ struct ProfileView: View {
                         Image(uiImage: profileImage)
                                               .resizable()
                                               .scaledToFill()
-                                              .frame(width: 100, height: 100)
+                                              .frame(width: 80, height: 80)
                                               .clipShape(Circle())
                     } else{
-                        Image(user.profileImageUrl ?? "")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 100, height: 100)
-                            .foregroundColor(Color(.systemGray4))
-                            .clipShape(Circle())
+                        CircularProfileImageView(user: user, size: .xLarge)
                     }
                 }
                 
