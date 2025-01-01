@@ -10,7 +10,7 @@ import SwiftUI
 struct ActiveNowView: View {
     var body: some View {
         ScrollView(.horizontal,showsIndicators: false){
-            HStack(spacing: 32){
+            HStack(){
                 ForEach(0 ... 10, id: \.self) { user in
                     VStack{
                         ZStack(alignment: .bottomTrailing){

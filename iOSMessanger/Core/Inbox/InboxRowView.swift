@@ -17,7 +17,7 @@ struct InboxRowView: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 Text("Recent messages from your friends")
-                    .font(.subheadline)
+                .font(.subheadline)
                     .foregroundColor(.gray)
                     .lineLimit(2)
                     
